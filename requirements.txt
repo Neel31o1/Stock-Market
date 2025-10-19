@@ -84,3 +84,4 @@ mypy==1.7.1             # Static type checker (optional)
 jupyter==1.0.0          # Jupyter notebooks (optional)
 notebook==7.0.6         # Jupyter notebook interface (optional)
 ipykernel==6.27.1       # IPython kernel (optional)
+
