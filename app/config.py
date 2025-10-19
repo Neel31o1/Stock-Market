@@ -20,7 +20,7 @@ START_DATE = "2025-11-01"  # Format: YYYY-MM-DD - When you'll start investing
 INVESTMENT_DAY = 5  # Day of month to invest (5th is recommended)
 
 # Investor details (customize this!)
-INVESTOR_NAME = "Neel"  # Your name
+INVESTOR_NAME = "Neel Shah"  # Your name
 INVESTOR_AGE = 26  # Your current age
 INVESTMENT_HORIZON = 20  # Investment period in years
 
@@ -66,11 +66,26 @@ GOLD_ETF = {
 }
 
 # ============================================================================
+# EMAIL NOTIFICATION SETTINGS
+# ============================================================================
+
+# Email configuration
+EMAIL_ENABLED = True  # Set to True to enable email reminders
+EMAIL_FROM = "nealshah8888@gmail.com"  # Your email (sender)
+EMAIL_TO = ["nealshah8888@gmail.com", "shahtirth547@gmail.com"]  # Recipients (you and your friend)
+EMAIL_PASSWORD = ""  # Leave empty - stored in .env file for security
+
+# Gmail SMTP settings (don't change these)
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+SMTP_USE_TLS = True
+
+# ============================================================================
 # REMINDER & NOTIFICATION SETTINGS
 # ============================================================================
 
 # Desktop notification settings
-DESKTOP_NOTIFICATIONS = True  # Set to True for desktop alerts
+DESKTOP_NOTIFICATIONS = False  # Disabled for macOS compatibility
 
 # Reminder schedule (days before investment day)
 REMINDER_DAYS_BEFORE = [5, 3, 1]  # Send reminders 5, 3, and 1 day before
