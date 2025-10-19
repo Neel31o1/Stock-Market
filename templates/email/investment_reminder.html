@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f8fafc; padding: 30px 0;">
+        <tr>
+            <td align="center">
+                <!-- Main Container -->
+                <table width="650" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); padding: 40px 30px; text-align: center;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">
+                                Investment Reminder
+                            </h1>
+                            <p style="margin: 12px 0 0 0; color: rgba(255,255,255,0.95); font-size: 15px; font-weight: 400;">
+                                Your Monthly SIP Schedule
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Investment Date Card -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #f0f9ff; border-radius: 12px; padding: 24px; border: 1px solid #e0f2fe;">
+                                <tr>
+                                    <td align="center">
+                                        <p style="margin: 0; color: #0369a1; font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600;">
+                                            NEXT INVESTMENT DATE
+                                        </p>
+                                        <h2 style="margin: 12px 0 8px 0; color: #075985; font-size: 32px; font-weight: 700; letter-spacing: -1px;">
+                                            {{investment_date}}
+                                        </h2>
+                                        <p style="margin: 0; color: #0369a1; font-size: 14px; font-weight: 500;">
+                                            Month {{month_number}} • Year {{year_number}} • {{phase}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Stats Grid -->
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td width="25%" style="padding: 0 6px;">
+                                        <table width="100%" cellpadding="16" cellspacing="0" border="0" style="background-color: #fafafa; border-radius: 10px; border: 1px solid #e5e7eb;">
+                                            <tr>
+                                                <td align="center">
+                                                    <p style="margin: 0; color: #6b7280; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">INVESTED</p>
+                                                    <p style="margin: 8px 0 0 0; color: #111827; font-size: 18px; font-weight: 700;">₹{{total_invested}}L</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="25%" style="padding: 0 6px;">
+                                        <table width="100%" cellpadding="16" cellspacing="0" border="0" style="background-color: #fafafa; border-radius: 10px; border: 1px solid #e5e7eb;">
+                                            <tr>
+                                                <td align="center">
+                                                    <p style="margin: 0; color: #6b7280; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">CURRENT</p>
+                                                    <p style="margin: 8px 0 0 0; color: #111827; font-size: 18px; font-weight: 700;">₹{{current_value}}L</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="25%" style="padding: 0 6px;">
+                                        <table width="100%" cellpadding="16" cellspacing="0" border="0" style="background-color: #ecfdf5; border-radius: 10px; border: 1px solid #d1fae5;">
+                                            <tr>
+                                                <td align="center">
+                                                    <p style="margin: 0; color: #047857; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">RETURNS</p>
+                                                    <p style="margin: 8px 0 0 0; color: #047857; font-size: 18px; font-weight: 700;">₹{{returns}}L</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="25%" style="padding: 0 6px;">
+                                        <table width="100%" cellpadding="16" cellspacing="0" border="0" style="background-color: #ecfdf5; border-radius: 10px; border: 1px solid #d1fae5;">
+                                            <tr>
+                                                <td align="center">
+                                                    <p style="margin: 0; color: #047857; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">GROWTH</p>
+                                                    <p style="margin: 8px 0 0 0; color: #047857; font-size: 18px; font-weight: 700;">{{return_pct}}%</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Nifty 50 Section -->
+                    <tr>
+                        <td style="padding: 0 30px 20px 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding: 0 0 16px 0;">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; color: #111827; font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">
+                                                        Nifty 50 Allocation
+                                                    </p>
+                                                </td>
+                                                <td align="right">
+                                                    <p style="margin: 0; color: #3b82f6; font-size: 18px; font-weight: 700;">
+                                                        {{nifty50_total}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Nifty 50 Table -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+                                <tr style="background-color: #fafafa;">
+                                    <td style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">COMPANY</td>
+                                    <td style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">TICKER</td>
+                                    <td style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">SECTOR</td>
+                                    <td align="right" style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">AMOUNT</td>
+                                </tr>
+                                {{nifty50_rows}}
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Diversified Section -->
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding: 0 0 16px 0;">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; color: #111827; font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">
+                                                        Diversified Allocation
+                                                    </p>
+                                                </td>
+                                                <td align="right">
+                                                    <p style="margin: 0; color: #10b981; font-size: 18px; font-weight: 700;">
+                                                        {{diversified_total}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Diversified Table -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+                                <tr style="background-color: #fafafa;">
+                                    <td style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">CATEGORY</td>
+                                    <td style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">INSTRUMENT</td>
+                                    <td align="right" style="padding: 14px 16px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">AMOUNT</td>
+                                </tr>
+                                {{diversified_rows}}
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Total Box -->
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px;">
+                            <table width="100%" cellpadding="24" cellspacing="0" border="0" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 12px;">
+                                <tr>
+                                    <td align="center">
+                                        <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+                                            TOTAL MONTHLY SIP
+                                        </p>
+                                        <h2 style="margin: 12px 0 0 0; color: #ffffff; font-size: 36px; font-weight: 800; letter-spacing: -1px;">
+                                            ₹15,000
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Action Box -->
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px;">
+                            <table width="100%" cellpadding="24" cellspacing="0" border="0" style="background: #f0f9ff; border-radius: 12px; border: 1px solid #e0f2fe;">
+                                <tr>
+                                    <td>
+                                        <p style="margin: 0 0 16px 0; color: #075985; font-size: 16px; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">
+                                            📌 Next Steps
+                                        </p>
+                                        
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td style="padding: 10px 0;">
+                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td width="28" height="28" align="center" valign="middle" style="background-color: #3b82f6; border-radius: 50%; color: #ffffff; font-weight: 700; font-size: 12px; vertical-align: middle;">1</td>
+                                                            <td style="padding-left: 12px; color: #334155; font-size: 14px; font-weight: 500; vertical-align: middle;">Transfer ₹15,000 to trading account</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0;">
+                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td width="28" height="28" align="center" valign="middle" style="background-color: #3b82f6; border-radius: 50%; color: #ffffff; font-weight: 700; font-size: 12px; vertical-align: middle;">2</td>
+                                                            <td style="padding-left: 12px; color: #334155; font-size: 14px; font-weight: 500; vertical-align: middle;">Execute purchases on {{investment_date}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0;">
+                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td width="28" height="28" align="center" valign="middle" style="background-color: #3b82f6; border-radius: 50%; color: #ffffff; font-weight: 700; font-size: 12px; vertical-align: middle;">3</td>
+                                                            <td style="padding-left: 12px; color: #334155; font-size: 14px; font-weight: 500; vertical-align: middle;">Update transaction log</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Investment Strategy Details -->
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding: 0 0 20px 0; text-align: center;">
+                                        <h2 style="margin: 0; color: #111827; font-size: 22px; font-weight: 700; letter-spacing: -0.3px;">
+                                            Your Investment Strategy Overview
+                                        </h2>
+                                        <p style="margin: 8px 0 0 0; color: #6b7280; font-size: 14px; font-weight: 400;">
+                                            Diversified portfolio approach for long-term wealth creation
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Strategy Cards Grid - Row 1 -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 16px;">
+                                <tr>
+                                    <!-- Blue Chip Stocks Card -->
+                                    <td width="33%" style="padding-right: 8px;" valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;">
+                                            <tr>
+                                                <td style="padding: 20px;" align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px;">
+                                                        <tr>
+                                                            <td width="48" height="48" align="center" valign="middle" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border-radius: 50%; font-size: 20px; line-height: 1; vertical-align: middle;">
+                                                                <span style="color: #ffffff;">📈</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <h3 style="margin: 0 0 6px 0; color: #111827; font-size: 14px; font-weight: 600;">Blue Chip Stocks</h3>
+                                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.4;">Large-cap companies with consistent performance and stability</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    
+                                    <!-- Index Funds Card -->
+                                    <td width="33%" style="padding: 0 4px;" valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;">
+                                            <tr>
+                                                <td style="padding: 20px;" align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px;">
+                                                        <tr>
+                                                            <td width="48" height="48" align="center" valign="middle" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 50%; font-size: 20px; line-height: 1; vertical-align: middle;">
+                                                                <span style="color: #ffffff;">🎯</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <h3 style="margin: 0 0 6px 0; color: #111827; font-size: 14px; font-weight: 600;">Index Funds</h3>
+                                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.4;">Diversified exposure to broad market with low cost and steady growth</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    
+                                    <!-- Growth Assets Card -->
+                                    <td width="33%" style="padding-left: 8px;" valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;">
+                                            <tr>
+                                                <td style="padding: 20px;" align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px;">
+                                                        <tr>
+                                                            <td width="48" height="48" align="center" valign="middle" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; font-size: 20px; line-height: 1; vertical-align: middle;">
+                                                                <span style="color: #ffffff;">🚀</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <h3 style="margin: 0 0 6px 0; color: #111827; font-size: 14px; font-weight: 600;">Growth Assets</h3>
+                                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.4;">Mid-cap, small-cap and international funds for enhanced returns</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Strategy Cards Grid - Row 2 -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <!-- Risk Management Card -->
+                                    <td width="33%" style="padding-right: 8px;" valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;">
+                                            <tr>
+                                                <td style="padding: 20px;" align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px;">
+                                                        <tr>
+                                                            <td width="48" height="48" align="center" valign="middle" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); border-radius: 50%; font-size: 20px; line-height: 1; vertical-align: middle;">
+                                                                <span style="color: #ffffff;">🛡️</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <h3 style="margin: 0 0 6px 0; color: #111827; font-size: 14px; font-weight: 600;">Risk Management</h3>
+                                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.4;">Systematic diversification across sectors, geographies and asset classes</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    
+                                    <!-- Long Term Vision Card -->
+                                    <td width="33%" style="padding: 0 4px;" valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;">
+                                            <tr>
+                                                <td style="padding: 20px;" align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px;">
+                                                        <tr>
+                                                            <td width="48" height="48" align="center" valign="middle" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); border-radius: 50%; font-size: 20px; line-height: 1; vertical-align: middle;">
+                                                                <span style="color: #ffffff;">⏳</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <h3 style="margin: 0 0 6px 0; color: #111827; font-size: 14px; font-weight: 600;">Long Term Vision</h3>
+                                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.4;">30-year horizon allowing compound growth and wealth multiplication</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    
+                                    <!-- Smart Automation Card -->
+                                    <td width="33%" style="padding-left: 8px;" valign="top">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;">
+                                            <tr>
+                                                <td style="padding: 20px;" align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto 12px;">
+                                                        <tr>
+                                                            <td width="48" height="48" align="center" valign="middle" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); border-radius: 50%; font-size: 20px; line-height: 1; vertical-align: middle;">
+                                                                <span style="color: #ffffff;">🤖</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <h3 style="margin: 0 0 6px 0; color: #111827; font-size: 14px; font-weight: 600;">Smart Automation</h3>
+                                                    <p style="margin: 0; color: #6b7280; font-size: 12px; line-height: 1.4;">Disciplined SIP approach with automated reminders and tracking</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Key Benefits Section -->
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px;">
+                            <table width="100%" cellpadding="20" cellspacing="0" border="0" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; border: 1px solid #bae6fd;">
+                                <tr>
+                                    <td>
+                                        <h3 style="margin: 0 0 16px 0; color: #075985; font-size: 16px; font-weight: 700; text-align: center;">
+                                            ✨ Key Benefits of Your Strategy
+                                        </h3>
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <tr>
+                                                <td width="50%" style="padding: 8px 12px 8px 0;">
+                                                    <p style="margin: 0; color: #334155; font-size: 13px;">
+                                                        <strong>• Dollar Cost Averaging:</strong> Reduces timing risk through regular investments
+                                                    </p>
+                                                </td>
+                                                <td width="50%" style="padding: 8px 0 8px 12px;">
+                                                    <p style="margin: 0; color: #334155; font-size: 13px;">
+                                                        <strong>• Compound Growth:</strong> Time multiplies your wealth exponentially
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%" style="padding: 8px 12px 8px 0;">
+                                                    <p style="margin: 0; color: #334155; font-size: 13px;">
+                                                        <strong>• Tax Efficiency:</strong> Long-term capital gains tax benefits
+                                                    </p>
+                                                </td>
+                                                <td width="50%" style="padding: 8px 0 8px 12px;">
+                                                    <p style="margin: 0; color: #334155; font-size: 13px;">
+                                                        <strong>• Professional Management:</strong> Expert fund management for sectoral funds
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #fafafa; padding: 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+                            <p style="margin: 0 0 8px 0; color: #111827; font-size: 15px; font-weight: 600;">
+                                Stock Market Investment Automation
+                            </p>
+                            <p style="margin: 0 0 20px 0; color: #6b7280; font-size: 12px; font-weight: 400;">
+                                Powered by PySpark • Built for Smart Investing
+                            </p>
+                            
+                            <!-- Enhanced Recipients Box with Perfect Alignment -->
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 1px solid #bae6fd; border-radius: 12px;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <!-- Header -->
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 16px;">
+                                            <tr>
+                                                <td align="center">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+                                                        <tr>
+                                                            <td width="32" height="32" align="center" valign="middle" style="background-color: #3b82f6; border-radius: 50%; vertical-align: middle;">
+                                                                <span style="color: #ffffff; font-size: 16px; line-height: 1;">📧</span>
+                                                            </td>
+                                                            <td style="padding-left: 12px; vertical-align: middle;">
+                                                                <p style="margin: 0; color: #075985; font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; line-height: 1;">Email Recipients</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Recipient 1 -->
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; margin-bottom: 10px;">
+                                            <tr>
+                                                <td style="padding: 14px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td width="36" align="center" valign="middle" style="vertical-align: middle;">
+                                                                <span style="font-size: 32px; line-height: 1; display: inline-block;">📧</span>
+                                                            </td>
+                                                            <td style="padding-left: 12px; vertical-align: middle;">
+                                                                <p style="margin: 0; padding: 0; color: #111827; font-size: 14px; font-weight: 600; line-height: 1.4;">Neel Shah</p>
+                                                                <p style="margin: 0; padding: 0; color: #3b82f6; font-size: 12px; font-weight: 500; line-height: 1.4;">neelshah3100@gmail.com</p>
+                                                            </td>
+                                                            <td align="right" width="20" valign="middle" style="vertical-align: middle;">
+                                                                <table cellpadding="0" cellspacing="0" border="0">
+                                                                    <tr>
+                                                                        <td width="10" height="10" style="background-color: #10b981; border-radius: 50%; font-size: 0; line-height: 0;">&nbsp;</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Recipient 2 -->
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px;">
+                                            <tr>
+                                                <td style="padding: 14px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                        <tr>
+                                                            <td width="36" align="center" valign="middle" style="vertical-align: middle;">
+                                                                <span style="font-size: 32px; line-height: 1; display: inline-block;">📧</span>
+                                                            </td>
+                                                            <td style="padding-left: 12px; vertical-align: middle;">
+                                                                <p style="margin: 0; padding: 0; color: #111827; font-size: 14px; font-weight: 600; line-height: 1.4;">Tirth Shah</p>
+                                                                <p style="margin: 0; padding: 0; color: #3b82f6; font-size: 12px; font-weight: 500; line-height: 1.4;">shahtirth547@gmail.com</p>
+                                                            </td>
+                                                            <td align="right" width="20" valign="middle" style="vertical-align: middle;">
+                                                                <table cellpadding="0" cellspacing="0" border="0">
+                                                                    <tr>
+                                                                        <td width="10" height="10" style="background-color: #10b981; border-radius: 50%; font-size: 0; line-height: 0;">&nbsp;</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="margin: 20px 0 0 0; color: #9ca3af; font-size: 11px; line-height: 1.6;">
+                                ⚠️ Market investments are subject to risk. Past performance is not indicative of future results.<br>
+                                Generated on {{timestamp}}
+                            </p>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

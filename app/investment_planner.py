@@ -220,80 +220,58 @@ class InvestmentPlanner:
         """
         Plan diversified allocation based on investment phase
         
-        Strategy evolves over 20 years:
-        - Early years: More mid-cap, gold hedge
-        - Middle years: Add international exposure
-        - Later years: Increase balanced funds, reduce risk
+        Strategy evolves over 30 years (extended timeline)
         """
+        
         allocation = {}
         
-        if 1 <= year_num <= 5:
-            # Phase 1: Foundation - Conservative
+        if 1 <= year_num <= 10:
+            # Phase 1 (Age 26-36): Aggressive Growth
             allocation = {
                 "mid_cap": {
-                    "amount": 2500,
+                    "amount": 3500,
                     "instrument": MID_CAP_ETF["ticker"],
                     "name": MID_CAP_ETF["name"]
                 },
-                "sectoral": {
+                "small_cap": {
                     "amount": 1500,
-                    "instrument": "Sectoral Fund (see recommendation)"
-                },
-                "gold": {
-                    "amount": 1000,
-                    "instrument": GOLD_ETF["ticker"],
-                    "name": GOLD_ETF["name"]
-                }
-            }
-        elif 6 <= year_num <= 10:
-            # Phase 2: Growth - Moderate-High
-            allocation = {
-                "mid_cap": {
-                    "amount": 2000,
-                    "instrument": MID_CAP_ETF["ticker"],
-                    "name": MID_CAP_ETF["name"]
+                    "instrument": "Nifty Small Cap 250 Index Fund"
                 },
                 "sectoral": {
                     "amount": 1500,
                     "instrument": "Sectoral Fund (see recommendation)"
                 },
                 "international": {
-                    "amount": 1000,
-                    "instrument": "Nasdaq 100 / US Equity FOF"
-                },
-                "gold": {
                     "amount": 500,
-                    "instrument": GOLD_ETF["ticker"],
-                    "name": GOLD_ETF["name"]
+                    "instrument": "Nasdaq 100 / Global Equity"
                 }
             }
-        elif 11 <= year_num <= 15:
-            # Phase 3: Accumulation - Balanced
+        elif 11 <= year_num <= 20:
+            # Phase 2 (Age 36-46): Balanced Growth
             allocation = {
                 "mid_cap": {
-                    "amount": 2000,
+                    "amount": 3000,
                     "instrument": MID_CAP_ETF["ticker"],
                     "name": MID_CAP_ETF["name"]
                 },
-                "sectoral": {
-                    "amount": 1500,
-                    "instrument": "Sectoral Fund (see recommendation)"
+                "small_cap": {
+                    "amount": 1000,
+                    "instrument": "Nifty Small Cap 250 Index Fund"
                 },
                 "international": {
-                    "amount": 1000,
+                    "amount": 1500,
                     "instrument": "Global Equity Fund"
                 },
-                "gold": {
+                "sectoral": {
                     "amount": 500,
-                    "instrument": GOLD_ETF["ticker"],
-                    "name": GOLD_ETF["name"]
+                    "instrument": "Sectoral Fund (see recommendation)"
                 }
             }
-        else:
-            # Phase 4: Consolidation - Risk Reduction
+        elif 21 <= year_num <= 25:
+            # Phase 3 (Age 46-51): Consolidation
             allocation = {
                 "mid_cap": {
-                    "amount": 1000,
+                    "amount": 2000,
                     "instrument": MID_CAP_ETF["ticker"],
                     "name": MID_CAP_ETF["name"]
                 },
@@ -305,14 +283,30 @@ class InvestmentPlanner:
                     "amount": 1500,
                     "instrument": "Global Equity Fund"
                 },
-                "gold": {
+                "debt": {
                     "amount": 500,
-                    "instrument": GOLD_ETF["ticker"],
-                    "name": GOLD_ETF["name"]
+                    "instrument": "Liquid/Debt Fund"
+                }
+            }
+        else:  # 26-30
+            # Phase 4 (Age 51-56): Capital Preservation
+            allocation = {
+                "balanced": {
+                    "amount": 2500,
+                    "instrument": "Balanced Advantage Fund"
+                },
+                "debt": {
+                    "amount": 2000,
+                    "instrument": "Corporate Bond Fund"
+                },
+                "international": {
+                    "amount": 500,
+                    "instrument": "Global Equity Fund"
                 }
             }
         
         return allocation
+
     
     def _get_sectoral_fund(self, year_num):
         """

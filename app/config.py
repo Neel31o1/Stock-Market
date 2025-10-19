@@ -22,7 +22,7 @@ INVESTMENT_DAY = 5  # Day of month to invest (5th is recommended)
 # Investor details (customize this!)
 INVESTOR_NAME = "Neel Shah"  # Your name
 INVESTOR_AGE = 26  # Your current age
-INVESTMENT_HORIZON = 20  # Investment period in years
+INVESTMENT_HORIZON = 30  # Investment period in years
 
 # ============================================================================
 # NIFTY 50 STOCK ROTATION (Top 12 blue-chip stocks)
